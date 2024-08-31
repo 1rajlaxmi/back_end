@@ -15,6 +15,15 @@ dotenv.config(); // Load environment variables before anything else
 const PORT = process.env.PORT || 5000
 
 // Set up CORS
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://chitchatraj.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 app.use(cors({
   origin: 'https://chitchatraj.vercel.app', // Replace with your frontend's origin
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow specific methods
