@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5000
 
 // Set up CORS
 app.use(cors({
-  origin: 'https://backend-git-main-rajlaxmis-projects.vercel.app', // Replace with your frontend's origin
+  origin: 'https://chitchatraj.vercel.app', // Replace with your frontend's origin
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow specific methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
   credentials: true // If you want to allow cookies or authorization headers
