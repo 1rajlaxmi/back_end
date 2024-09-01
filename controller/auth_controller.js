@@ -24,30 +24,30 @@ export const signup = async (req, res) => {
         const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
         const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
-        // const newUser = new User({
-        //     fullname,
-        //     username,
-        //     password :hashedPassword,
-        //     gender,
-        //     profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
-        // });
+        const newUser = new User({
+            fullname,
+            username,
+            password :hashedPassword,
+            gender,
+            profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
+        });
 
-   //      if (newUser) {
-   //          // Generate JWT token here
-			// generateTokenAndSetCookie(newUser._id, res);
-   //          await newUser.save();
+        if (newUser) {
+            // Generate JWT token here
+			generateTokenAndSetCookie(newUser._id, res);
+            await newUser.save();
 
-   //          res.status(201).json({
-   //              _id: newUser._id,
-   //              fullname: newUser.fullname,
-   //              username: newUser.username,
-   //              profilePic: newUser.profilePic,
-   //          });
-   //      } 
-	    return res.status(400).json({ e: fullname });
-    //  else {
-    //     res.status(400).json({ error: "Invalid user data" });
-    // }
+            res.status(201).json({
+                _id: newUser._id,
+                fullname: newUser.fullname,
+                username: newUser.username,
+                profilePic: newUser.profilePic,
+            });
+        } 
+	   return res.status(400).json({ e: fullname });
+     else {
+        res.status(400).json({ error: "Invalid user data" });
+    }
 } catch (error) {
     console.log("Error in signup controller", error.message);
     res.status(500).json({ error: "Internal Server Error" });
