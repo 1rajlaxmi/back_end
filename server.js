@@ -47,7 +47,18 @@ app.get("/", (req, res) => {
 })
 
 // Start server
-server.listen(PORT, () => {
-  connectMongodb();
-  console.log(`Server Running on port ${PORT}`);
+// server.listen(PORT, () => {
+//   connectMongodb();
+//   console.log(`Server Running on port ${PORT}`);
+// });
+server.listen(PORT, async () => {
+  try {
+    await connectMongodb(); // Wait for the MongoDB connection to be successful
+    console.log(`MongoDB connected successfully`);
+    console.log(`Server Running on port ${PORT}`);
+  } catch (error) {
+    console.error("Failed to connect to MongoDB:", error.message);
+    process.exit(1); // Exit the process if MongoDB fails to connect
+  }
 });
+
