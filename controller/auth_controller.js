@@ -44,7 +44,7 @@ export const signup = async (req, res) => {
                 profilePic: newUser.profilePic,
             });
         } 
-	   return res.status(400).json({ e: fullname });
+	  
      else {
         res.status(400).json({ error: "Invalid user data" });
     }
