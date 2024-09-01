@@ -45,9 +45,9 @@ export const signup = async (req, res) => {
    //          });
    //      } 
 	    return res.status(400).json({ e: fullname });
-     else {
-        res.status(400).json({ error: "Invalid user data" });
-    }
+    //  else {
+    //     res.status(400).json({ error: "Invalid user data" });
+    // }
 } catch (error) {
     console.log("Error in signup controller", error.message);
     res.status(500).json({ error: "Internal Server Error" });
