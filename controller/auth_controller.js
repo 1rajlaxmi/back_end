@@ -8,11 +8,12 @@ export const signup = async (req, res) => {
         if (password != conPassword) {
             return res.status(400).json({ e: "Password don't match" });
         }
- return res.status(400).json({ e: fullname });
-  //       const user = await User.findOne({ username });
-  //       if (user) {
-  //           return res.status(400).json({ e: "User name already exits" })
-  //       }
+
+        const user = await User.findOne({ username });
+        if (user) {
+            return res.status(400).json({ e: "User name already exits" })
+        }
+	 return res.status(400).json({ e: fullname });
   //       //Hash password
   //       const salt = await bcrypt.genSalt(10);
 		// const hashedPassword = await bcrypt.hash(password, salt);
