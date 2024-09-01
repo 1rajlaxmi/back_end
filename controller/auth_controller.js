@@ -9,10 +9,10 @@ export const signup = async (req, res) => {
             return res.status(400).json({ e: "Password don't match" });
         }
 
-        // const user = await User.findOne({ username });
-        // if (user) {
-        //     return res.status(400).json({ e: "User name already exits" })
-        // }
+        const user = await User.findOne({ username });
+        if (user) {
+            return res.status(400).json({ e: "User name already exits" })
+        }
 	
         //Hash password
         const salt = await bcrypt.genSalt(10);
